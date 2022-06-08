@@ -62,7 +62,11 @@ function boldPassage(word, text) {
   textArray.forEach(function (element, index) {
     if (element.toLowerCase().includes(word.toLowerCase())) {
       substr = word;
-      htmlString = htmlString.concat(element.substr(0, index) + '<b>' + substr + '</b>');
+      console.log(element.substr(0, index))
+      htmlString = htmlString.concat(element.splice(element.indexOf(word), word.length) + '<b>' + substr + '</b>');
+
+      // element.slice/remove/idk(element.substr(element.indexOf(word), word.length)) +  + '<b>' + substr + '</b>'
+
     } else {
       htmlString = htmlString.concat(element);
     }
