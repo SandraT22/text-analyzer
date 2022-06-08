@@ -56,10 +56,13 @@ function boldPassage(word, text) {
     return '';
   }
   let htmlString = '<p>';
+  let string = "";
+  let substr = "";
   let textArray = text.split(' ');
   textArray.forEach(function (element, index) {
     if (element.toLowerCase().includes(word.toLowerCase())) {
-      htmlString = htmlString.concat('<b>' + element + '</b>');
+      substr = word;
+      htmlString = htmlString.concat(element.substr(0, index) + '<b>' + substr + '</b>');
     } else {
       htmlString = htmlString.concat(element);
     }

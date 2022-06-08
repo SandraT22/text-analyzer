@@ -98,3 +98,27 @@ Test: "If an empty string is passed in as a word, it should return 0."
 Code:
 `const word = ""; const text = "red RED Red!"; wordCounter(word, text);`
 Expected Output: 0
+
+```
+function boldPassage(word, text) {
+  if (noInputtedWord(word, text)) {
+    return '';
+  }
+  let htmlString = '<p>';
+  let string = "";
+  let substr = "";
+  let textArray = text.split(' ');
+  textArray.forEach(function (element, index) {
+    if (element.toLowerCase().includes(word.toLowerCase())) {
+      substr = word;
+      htmlString = htmlString.concat(element.substr(0, index) + '<b>' + substr + '</b>');
+    } else {
+      htmlString = htmlString.concat(element);
+    }
+    if (index !== textArray.length - 1) {
+      htmlString = htmlString.concat(' ');
+    }
+  });
+  return htmlString + '</p>';
+}
+```
