@@ -7,17 +7,26 @@ function noInputtedWord(word, text) {
 // Business Logic
 
 function wordCounter(text) {
-  if (text.trim().length === 0) {
+  if (noInputtedWord(text)) {
     return 0;
   }
   let wordCount = 0;
-  const wordArray = text.split(' ');
-  wordArray.forEach(function (element) {
+  const wordArray = text.split(" ");
+  wordArray.forEach(function(element) {
     if (!Number(element)) {
       wordCount++;
     }
   });
   return wordCount;
+}
+
+function noInputtedWord() {
+  for (let i=0; i < arguments.length; i++) {
+    if (arguments[i].trim().length === 0) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function numberOfOccurrencesInText(word, text) {
@@ -32,6 +41,17 @@ function numberOfOccurrencesInText(word, text) {
     }
   });
   return wordCount;
+}
+
+function firstInstanceOfWord(word, text) {
+  const textArray = text.split(" ");
+  for (let i = 0; i < textArray.length; i++) {
+    console.log(i);
+    if (word === textArray[i]) {
+      return i;
+    }
+  }
+  return -1;
 }
 
 function noPottyMouth(text) {
@@ -56,17 +76,10 @@ function boldPassage(word, text) {
     return '';
   }
   let htmlString = '<p>';
-  let string = "";
-  let substr = "";
   let textArray = text.split(' ');
   textArray.forEach(function (element, index) {
     if (element.toLowerCase().includes(word.toLowerCase())) {
-      substr = word;
-      console.log(element.substr(0, index))
-      htmlString = htmlString.concat(element.splice(element.indexOf(word), word.length) + '<b>' + substr + '</b>');
-
-      // element.slice/remove/idk(element.substr(element.indexOf(word), word.length)) +  + '<b>' + substr + '</b>'
-
+      htmlString = htmlString.concat('<b>' + element + '</b>');
     } else {
       htmlString = htmlString.concat(element);
     }
@@ -76,6 +89,32 @@ function boldPassage(word, text) {
   });
   return htmlString + '</p>';
 }
+
+// function boldPassage(word, text) {
+//   if (noInputtedWord(word, text)) {
+//     return '';
+//   }
+//   let htmlString = '<p>';
+//   let string = "";
+//   let substr = "";
+//   let textArray = text.split(' ');
+//   textArray.forEach(function (element, index) {
+//     if (element.toLowerCase().includes(word.toLowerCase())) {
+//       substr = word;
+//       console.log(element.substr(0, index))
+//       htmlString = htmlString.concat(element.splice(element.indexOf(word), word.length) + '<b>' + substr + '</b>');
+
+//       // element.slice/remove/idk(element.substr(element.indexOf(word), word.length)) +  + '<b>' + substr + '</b>'
+
+//     } else {
+//       htmlString = htmlString.concat(element);
+//     }
+//     if (index !== textArray.length - 1) {
+//       htmlString = htmlString.concat(' ');
+//     }
+//   });
+//   return htmlString + '</p>';
+// }
 
 // WIP solution:
 // let str = "Hello";
