@@ -90,31 +90,29 @@ function boldPassage(word, text) {
   return htmlString + '</p>';
 }
 
-// function boldPassage(word, text) {
-//   if (noInputtedWord(word, text)) {
-//     return '';
-//   }
-//   let htmlString = '<p>';
-//   let string = "";
-//   let substr = "";
-//   let textArray = text.split(' ');
-//   textArray.forEach(function (element, index) {
-//     if (element.toLowerCase().includes(word.toLowerCase())) {
-//       substr = word;
-//       console.log(element.substr(0, index))
-//       htmlString = htmlString.concat(element.splice(element.indexOf(word), word.length) + '<b>' + substr + '</b>');
-
-//       // element.slice/remove/idk(element.substr(element.indexOf(word), word.length)) +  + '<b>' + substr + '</b>'
-
-//     } else {
-//       htmlString = htmlString.concat(element);
-//     }
-//     if (index !== textArray.length - 1) {
-//       htmlString = htmlString.concat(' ');
-//     }
-//   });
-//   return htmlString + '</p>';
-// }
+function boldPassage(word, text) {
+  if (noInputtedWord(word, text)) {
+    return '';
+  }
+  let htmlString = '<p>';
+  let string = "";
+  let substr = "";
+  let textArray = text.split(' ');
+  textArray.forEach(function (element, index) {
+    if (element.toLowerCase().includes(word.toLowerCase())) {
+      substr = word;
+      htmlString = htmlString + element.replace(word, '<b>' + word + '</b>');
+      // htmlString = htmlString.concat(element.splice(element.indexOf(word), word.length) + '<b>' + substr + '</b>');
+      // element.slice/remove/idk(element.substr(element.indexOf(word), word.length)) +  + '<b>' + substr + '</b>'
+    } else {
+      htmlString = htmlString.concat(element);
+    }
+    if (index !== textArray.length - 1) {
+      htmlString = htmlString.concat(' ');
+    }
+  });
+  return htmlString + '</p>';
+}
 
 // WIP solution:
 // let str = "Hello";
